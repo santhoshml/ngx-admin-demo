@@ -18,7 +18,9 @@ import { FormInputsComponent } from './form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule as ngFormsModule } from '@angular/forms';
+import { FormAdminComponent } from './form-admin/form-admin.component';
+import { AdminService } from './form-admin/admin.service';
 
 @NgModule({
   imports: [
@@ -35,6 +37,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FormsComponent,
@@ -42,6 +45,10 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormInputsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
+    FormAdminComponent
   ],
+  providers: [
+    AdminService
+  ]
 })
 export class FormsModule { }

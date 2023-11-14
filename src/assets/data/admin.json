@@ -1,0 +1,22 @@
+{
+    "appointment_section": {
+      "position" : "1",
+      "visible": true,
+      "possibleValues": ["1", "2", "3", "4"]
+    },
+    "medication_section": {
+      "position" : "2",
+      "visible": true,
+      "possibleValues": ["1", "2", "3", "4"]
+    },
+    "lab_results_section": {
+      "position" : "3",
+      "visible": true,
+      "possibleValues": ["1", "2", "3", "4"]
+    },
+    "news_letters_section": {
+      "position" : "4",
+      "visible": true,
+      "possibleValues": ["1", "2", "3", "4"]
+    }
+  }

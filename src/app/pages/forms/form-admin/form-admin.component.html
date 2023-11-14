@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Set the rules</nb-card-header>
+      <nb-card-body>
+        <div class="form-group row">
+          <label for="inputEmail3" class="label col-sm-3 form-control-label">Appointment Section</label>
+          <div class="col-sm-9">
+            <nb-select (selectedChange)="changeAdminSetting($event, 'appointment_section')" [selected]="appointmentSectionPosition" *ngIf="adminObject?.appointment_section?.possibleValues">
+              <nb-option *ngFor="let pos of adminObject.appointment_section.possibleValues" [value]="pos">{{ pos }}</nb-option>
+            </nb-select>
+            &nbsp;&nbsp;&nbsp;
+            <label class="label col-sm-3 form-control-label">Visible : </label>
+            &nbsp;&nbsp;&nbsp;
+            <nb-checkbox [checked]="appointmentSectionVisible" (checkedChange)="toggle($event, 'appointment_section')"></nb-checkbox>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputEmail3" class="label col-sm-3 form-control-label">Medication Section</label>
+          <div class="col-sm-9">
+            <nb-select (selectedChange)="changeAdminSetting($event, 'medication_section')" [selected]="medicationSectionPosition" *ngIf="adminObject?.medication_section?.possibleValues">
+              <nb-option *ngFor="let pos of adminObject.medication_section.possibleValues" [value]="pos">{{ pos }}</nb-option>
+            </nb-select>
+            &nbsp;&nbsp;&nbsp;
+            <label class="label col-sm-3 form-control-label">Visible : </label>
+            &nbsp;&nbsp;&nbsp;
+            <nb-checkbox [checked]="medicationSectionVisible" (checkedChange)="toggle($event, 'medication_section')"></nb-checkbox>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputEmail3" class="label col-sm-3 form-control-label">Lab Results Section</label>
+          <div class="col-sm-9">
+            <nb-select (selectedChange)="changeAdminSetting($event, 'lab_results_section')" [selected]="labResultsSectionPosition" *ngIf="adminObject?.lab_results_section?.possibleValues">
+              <nb-option *ngFor="let pos of adminObject.lab_results_section.possibleValues" [value]="pos">{{ pos }}</nb-option>
+            </nb-select>
+            &nbsp;&nbsp;&nbsp;
+            <label class="label col-sm-3 form-control-label">Visible : </label>
+            &nbsp;&nbsp;&nbsp;
+            <nb-checkbox [checked]="labResultsSectionVisible" (checkedChange)="toggle($event, 'lab_results_section')"></nb-checkbox>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputEmail3" class="label col-sm-3 form-control-label">Newsletters Section</label>
+          <div class="col-sm-9">
+            <nb-select (selectedChange)="changeAdminSetting($event, 'news_letters_section')" [selected]="newsLettersSectionPosition" *ngIf="adminObject?.news_letters_section?.possibleValues">
+              <nb-option *ngFor="let pos of adminObject.news_letters_section.possibleValues" [value]="pos">{{ pos }}</nb-option>
+            </nb-select>
+            &nbsp;&nbsp;&nbsp;
+            <label class="label col-sm-3 form-control-label">Visible : </label>
+            &nbsp;&nbsp;&nbsp;
+            <nb-checkbox [checked]="labResultsSectionVisible" (checkedChange)="toggle($event, 'news_letters_section')"></nb-checkbox>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

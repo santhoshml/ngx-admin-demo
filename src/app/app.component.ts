@@ -6,6 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
+import LogRocket from 'logrocket';
 
 @Component({
   selector: 'ngx-app',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    LogRocket.init('ku1ssj/dev');
     this.analytics.trackPageViews();
     this.seoService.trackCanonicalChanges();
   }

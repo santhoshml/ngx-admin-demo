@@ -5,6 +5,8 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import LogRocket from 'logrocket';
 
 @Component({
   selector: 'ngx-header',
@@ -45,15 +47,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
+    let userKey = this.route.snapshot.queryParams?.user;
+    if(!userKey){
+      userKey = 'nick';
+    }
+
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+      .subscribe((users: any) => {
+        this.user = users[userKey]
+        LogRocket.identify(this.user.name);
+      });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()

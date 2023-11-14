@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
@@ -21,6 +22,7 @@
         "name": "tslint-language-service"
       }
     ],
-    "useDefineForClassFields": false
-  }
+    "useDefineForClassFields": false,
+    
+  },
 }

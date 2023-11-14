@@ -1,18 +1,18 @@
 [
   {
-    "title": "Fan of Angular-In-Depth and my writings? Support us on Twitter!",
-    "link": "https://blog.angularindepth.com/fan-of-angular-in-depth-and-my-writings-support-us-on-twitter-e3bfcbabb4b1",
-    "text": "A few weeks ago I ran a poll on Twitter to understand why Angular account has 280k followers on Twitter while Angular-In-Depth has only a fraction of that on Medium (11k). The poll showed that 50% of those who responded don’t use Medium, 17% find stories too complicated, 27% have no time to read and there are people (7%) who find stories not interesting."
+    "title": "What is dementia? Symptoms, stages, types, and more",
+    "link": "https://www.medicalnewstoday.com/articles/142214",
+    "text": "Dementia describes various symptoms of cognitive decline, such as forgetfulness. It is a symptom of several underlying conditions and brain disorders, such as Alzheimer’s disease."
   },
   {
-    "title": "Boosting performance of Angular applications with manual change detection",
-    "link": "https://blog.angularindepth.com/boosting-performance-of-angular-applications-with-manual-change-detection-42cb396110fb",
-    "text": "Angular uses NgZone/Zone.js to know when to trigger UI update (change detection) when our app data state changes. It brilliantly utilized the events emitted by Zone.js when async operations are performed to detect when to run a change detection cycle."
+    "title": "Risk of dementia higher among some ethnicities, study finds",
+    "link": "https://www.medicalnewstoday.com/articles/dementia-risk-higher-among-black-south-asian-ethnicities-study",
+    "text": "The number of people with dementia worldwide is expected to reach more than 150 millionTrusted Source by 2050. An aging population is responsible for much of the increase, but modifiable risk factors, such as hypertension, high body mass index, diabetes, and smoking, could be causing up to 40% of casesTrusted Source."
   },
   {
-    "title": "Learn how Angular Elements transmits Component’s @Outputs outside Angular",
-    "link": "https://blog.angularindepth.com/how-angular-elements-uses-custom-events-mechanism-to-transmit-components-outputs-outside-angular-7b469386f6e2",
-    "text": "In our last article we described how Angular Elements works under the hood. We identified that Angular Elements is a bridge to connect Custom Elements to Angular Components."
+    "title": "Insulin resistance from high-sugar diet may lead to brain decline",
+    "link": "https://www.medicalnewstoday.com/articles/insulin-resistance-high-sugar-diet-links-obesity-with-dementia",
+    "text": "Neurodegenerative diseases, such as Alzheimer’s disease, Parkinson’s disease, and amyotrophic lateral sclerosis (ALS), affect millions of people worldwide. Although scientists are still unclear as to what the main cause is for many neurodegenerative disordersTrusted Source, they do know certain risk factors play a role."
   },
   {
     "title": "Angular CDK Tables",

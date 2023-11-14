@@ -1,0 +1,159 @@
+<div id="parent">
+<div id="appointment_section" class="row">
+  <nb-card class="col-md-6 col-lg-6 col-xxxl-6">
+    <nb-card-header>
+      <h3>Current Appointment</h3>
+    </nb-card-header>
+    <nb-card-body>
+        <div >
+          <nb-stepper orientation="vertical">
+            <nb-step [label]=labelOne>
+              <ng-template #labelOne>
+                <div [innerHTML]="currentApptSteps?.labelOne?.templateText"></div>
+              </ng-template>
+              <div>
+                Next Step:
+                <div class="h5">{{currentApptSteps?.labelOne?.stepStatus}}</div>
+                <button nbButton nbStepperNext>next</button>
+              </div>
+            </nb-step>
+            <nb-step [label]="labelTwo">
+              <ng-template #labelTwo>
+                <div [innerHTML]="currentApptSteps?.labelTwo?.templateText"></div>
+              </ng-template>
+              <div>
+                Next Step:
+                <div class="h3">{{currentApptSteps?.labelTwo?.stepStatus}}</div>
+                <button nbButton nbStepperNext>next</button>
+              </div>
+            </nb-step>
+            <nb-step [label]="labelThree">
+              <ng-template #labelThree>
+                <div [innerHTML]="currentApptSteps?.labelThree?.templateText"></div>
+              </ng-template>
+              <div>
+                Next Step:
+                <div class="h3">{{currentApptSteps?.labelThree?.stepStatus}}</div>
+                <button nbButton nbStepperNext>next</button>
+              </div>
+            </nb-step>
+            <nb-step [label]="labelFour">
+              <ng-template #labelFour>
+                <div [innerHTML]="currentApptSteps?.labelFour?.templateText"></div>
+              </ng-template>
+              <div>
+                Next Step:
+                <div class="h3">{{currentApptSteps?.labelFour?.stepStatus}}</div>
+                <button nbButton nbStepperNext>next</button>
+              </div>
+            </nb-step>
+          </nb-stepper>
+        </div>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card class="col-md-6 col-lg-6 col-xxxl-6">
+    <nb-card-header>
+      <h3>Past Appointment</h3>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="accordion-container">
+        <nb-accordion>
+          <nb-accordion-item *ngFor="let appt of pastApptList">
+            <nb-accordion-item-header>
+              {{appt.title}}
+              <!-- <span><button style="margin-left: 50px;" nbButton>Schedule a followup</button></span> -->
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              {{appt.body}}
+              <br><br><br>
+              <button status="success" style="margin-left: 5px;" nbButton>View Visit Summary</button>
+              <button status="primary" style="margin-left: 50px;" nbButton>Schedule a followup</button>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+        </nb-accordion>
+      </div>
+    </nb-card-body>
+  </nb-card>  
+</div>
+
+<div id="medication_section" class="row">
+  <nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card-header><h3>Medications/Prescriptions</h3></nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <nb-card class="col-md-3 col-lg-3 col-xxxl-3 column-gap-3" *ngFor="let medic of medicationsList">
+          <nb-card-body>
+            <h5>{{medic.name | uppercase}}</h5>
+            <nb-icon class="volume-icon small" icon="info-outline" pack="eva"></nb-icon>
+            <span class="italic"><a href="">Learn more</a></span><br>
+            Started taking on {{medic.startDate}}<br>
+            Comments: {{medic.comments}}
+          </nb-card-body>
+          <nb-card-footer>
+            <button nbButton ghost size="small">
+              <nb-icon class="volume-icon" icon="trash-2-outline" pack="eva"></nb-icon>
+            </button>
+            Remove
+          </nb-card-footer>
+        </nb-card>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div id="lab_results_section" class="row">
+  <nb-card class="col-xxxl-12 col-xxl-12 col-lg-12 col-md-12">
+    <nb-card-header><h3>Lab Results</h3></nb-card-header>
+    <nb-card-body>
+
+      <label class="search-label" for="search">Search:</label>
+      <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+
+      <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+        <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+        <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+        <ng-container [nbTreeGridColumnDef]="customColumn">
+          <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+            {{customColumn}}
+          </th>
+          <td nbTreeGridCell *nbTreeGridCellDef="let row">
+            <ngx-fs-icon [kind]="row.data.kind" [expanded]="row.expanded"></ngx-fs-icon>
+            {{row.data[customColumn]}}
+          </td>
+        </ng-container>
+
+        <ng-container *ngFor="let column of defaultColumns; let index = index"
+                      [nbTreeGridColumnDef]="column"
+                      [showOn]="getShowOn(index)">
+          <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+            {{column}}
+          </th>
+          <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+        </ng-container>
+
+      </table>
+
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div id="news_letters_section" class="row">
+  <nb-card class="own-scroll col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card-header>Information / News Letters</nb-card-header>
+    <nb-list
+      nbInfiniteList
+      [threshold]="500"
+      (bottomThreshold)="loadNext(firstCard)">
+      <nb-list-item *ngFor="let newsPost of firstCard.news">
+        <ngx-news-post [post]="newsPost"></ngx-news-post>
+      </nb-list-item>
+      <nb-list-item *ngFor="let _ of firstCard.placeholders">
+        <ngx-news-post-placeholder></ngx-news-post-placeholder>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
+</div>
+</div>
